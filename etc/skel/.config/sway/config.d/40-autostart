@@ -16,8 +16,9 @@ exec_always ~/.config/sway/scripts/import-gsettings.sh
 exec swaybg -m fill -i ~/.config/sway/bg/kiro.jpg
 exec_always ~/.config/sway/scripts/set-theme.sh
 
-# Bar, notifications, idle-lock daemon.
-exec_always waybar
+# Bar (GTK_A11Y=none skips the at-spi bus so waybar paints immediately at login
+# instead of stalling ~25s), notifications, idle-lock daemon.
+exec_always env GTK_A11Y=none waybar
 exec mako
 exec hypridle
 

@@ -9,6 +9,9 @@ Format: one dated entry per day (`YYYY.MM.DD`), newest first.
 - **Initial config package** for the Kiro sway edition — the rock-solid i3-style tiler of the
   KIROTUX Wayland line. Ships the same waybar + mako + swaybg shell as kiro-hyprland, so the look
   and feel match the Hyprland edition; the SUPER keybind grammar is ported onto sway's i3 vocabulary.
+- **Fixed waybar appearing ~25s late at login** — `config.d/40-autostart` now launches
+  `env GTK_A11Y=none waybar`, skipping the at-spi accessibility bus that stalled the GTK bar before
+  it painted (same fix applied across the Wayland line; first found on kiro-river).
 - **swayfx as the shipped compositor** — the eye-candy sway fork (blur, rounded corners, shadows,
   dim-inactive) so the edition stays visually in step with hyprland/wayfire. Config-compatible with
   upstream sway; plain `sway` is a one-line `depends` swap.
