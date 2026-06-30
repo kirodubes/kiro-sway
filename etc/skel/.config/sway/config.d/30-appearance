@@ -1,0 +1,25 @@
+# Appearance — borders, gaps, font, and swayfx eye-candy.
+# The swayfx blocks (blur/corner_radius/shadows/dim) are IGNORED by upstream sway,
+# so this file is safe on both binaries — it just looks flat on plain sway.
+
+default_border pixel 2
+default_floating_border pixel 2
+titlebar_padding 1
+font pango:JetBrainsMono Nerd Font 10
+
+gaps inner 6
+gaps outer 4
+smart_gaps off
+
+# ── swayfx effects (the "feel like hyprland" layer) ──────────────────────────
+corner_radius 8
+blur enable
+blur_passes 2
+blur_radius 5
+blur_xray off
+shadows enable
+shadow_blur_radius 20
+shadow_color #00000080
+default_dim_inactive 0.05
+# Frost the bar like Hyprland's blurred waybar.
+layer_effects "waybar" blur enable

@@ -1,0 +1,39 @@
+# ════════════════════════════════════════════════════════════════════════
+# Kiro sway baseline config  (~/.config/sway/config)
+# ════════════════════════════════════════════════════════════════════════
+# Target: swayfx (the eye-candy sway fork — blur / rounded corners / shadows)
+# or upstream sway. Kiro's "rock-solid i3-style tiler" Wayland edition.
+#
+# Ports kiro-hyprland's look & feel — same SUPER keybind grammar, same Kiro app
+# launchers (CTRL+ALT + SUPER+F1..F12), the waybar + mako + swaybg shell, and the
+# hyprlock/hypridle lock pipeline — onto sway's native i3 grammar. waybar uses its
+# NATIVE sway/workspaces module here (no wlr/taskbar workaround like wayfire).
+#
+# This file only defines variables and pulls in the modular config.d/* snippets.
+# Edit those, not this entrypoint:
+#   10-input  20-output  30-appearance  35-colors (pywal-generated)
+#   40-autostart  50-window-rules  60-keybindings
+# Reference: man 5 sway
+# ────────────────────────────────────────────────────────────────────────
+
+# ── Variables ────────────────────────────────────────────────────────────
+set $mod Mod4
+set $term alacritty
+set $files thunar
+set $editor code
+set $menu rofi -show drun
+set $run rofi -show run
+set $lock hyprlock
+set $logout archlinux-logout
+set $powermenu kiro-powermenu
+set $keybindings kiro-keybindings
+
+# Directional keys — arrows for focus/move (kiro grammar); h/j/k/l resize.
+set $left Left
+set $down Down
+set $up Up
+set $right Right
+
+# ── Modular config ───────────────────────────────────────────────────────
+# sway loads the glob in sorted order, so the NN- prefixes control sequence.
+include ~/.config/sway/config.d/*

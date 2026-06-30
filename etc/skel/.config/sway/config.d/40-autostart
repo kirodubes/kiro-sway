@@ -1,0 +1,31 @@
+# Autostart — session services.
+# exec_always restarts the item on `swaymsg reload`; exec is one-shot per login.
+
+# Authentication agent + environment for portals/screensharing.
+exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec dbus-update-activation-environment --systemd --all
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+# Create the XDG user dirs on first login (sway doesn't run /etc/xdg/autostart).
+exec xdg-user-dirs-update
+
+# Mirror the GTK theme/icons/cursor/font into gsettings for GTK4/libadwaita apps.
+exec_always ~/.config/sway/scripts/import-gsettings.sh
+
+# Wallpaper + pywal theming (palette → waybar/mako/sway colours).
+exec swaybg -m fill -i ~/.config/sway/bg/kiro.jpg
+exec_always ~/.config/sway/scripts/set-theme.sh
+
+# Bar, notifications, idle-lock daemon.
+exec_always waybar
+exec mako
+exec hypridle
+
+# Auto-pick the split direction by window aspect ratio (modern manual tiling).
+exec autotiling
+
+# Network applet.
+exec nm-applet --indicator
+
+# Live ISO only: auto-launch the installer. kiro_final strips this line on install.
+exec sh -c '[ -d /run/archiso/bootmnt ] && calamares_polkit -d -style kvantum'
