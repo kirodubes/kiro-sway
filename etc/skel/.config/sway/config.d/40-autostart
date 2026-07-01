@@ -14,6 +14,7 @@ exec_always ~/.config/sway/scripts/import-gsettings.sh
 
 # Wallpaper + pywal theming (palette → waybar/mako/sway colours).
 exec swaybg -m fill -i ~/.config/sway/bg/kiro.jpg
+exec variety
 exec_always ~/.config/sway/scripts/set-theme.sh
 
 # Bar (GTK_A11Y=none skips the at-spi bus so waybar paints immediately at login

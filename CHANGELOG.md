@@ -3,6 +3,29 @@
 All notable changes to **kiro-sway** are documented here.
 Format: one dated entry per day (`YYYY.MM.DD`), newest first.
 
+## 2026.07.01
+
+### What Changed
+- **Added Variety wallpaper-rotator autostart + keybinds.** `variety` (configured by
+  `kiro-variety-config`) now autostarts alongside the existing static `swaybg` wallpaper. Ported
+  the ohmychadwm `keybindings.txt` scheme (Mod1+N/P/T/F/arrows/Up/Down/W): next/previous/trash/
+  favorite/pause/resume/selector, plus Mod1+Shift+N/P/T/F/U combos that also trigger this
+  edition's `set-theme.sh` pywal recolor (waybar/mako/`config.d/35-colors`). `variety` +
+  `kiro-variety-config` added to `depends=()`.
+
+### Technical Details
+- sway's `exec` treats a bare `;` as its own command separator, so the recolor combos are wrapped
+  in `exec sh -c '...; ...'` (matching how other multi-step sway commands in this file avoid the
+  ambiguity), rather than chaining bare `exec cmd1; exec cmd2` as an early draft did.
+- Verified no existing `Mod1+`(alt) binds collided with the new letters/arrows before adding (only
+  `Ctrl+Mod1` combos existed on those keys).
+
+### Files Modified
+- [etc/skel/.config/sway/config.d/60-keybindings](etc/skel/.config/sway/config.d/60-keybindings)
+- [etc/skel/.config/sway/config.d/40-autostart](etc/skel/.config/sway/config.d/40-autostart)
+- [etc/skel/.config/sway/keybindings.txt](etc/skel/.config/sway/keybindings.txt)
+- [../KIROTUX-PKG-BUILD/kiro-sway/PKGBUILD](../KIROTUX-PKG-BUILD/kiro-sway/PKGBUILD)
+
 ## 2026.06.30
 
 ### What Changed
